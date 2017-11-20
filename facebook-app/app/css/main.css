@@ -1,0 +1,61 @@
+body { opacity: 0;
+	overflow-x: hidden;
+	margin: 0; 
+	} 
+html { background-color: #fff; }
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+.login{
+	margin: 50px auto;
+	padding: 40px 0;
+	border: 2px solid #1761A0;
+	border-radius: 10px;
+	width: 350px;
+	background: url(img/facebookminlogo.png);
+}
+
+.login #logo{
+	margin: 0 auto;
+	display: block;
+}
+
+.login button{
+	color: white;
+	display: block;
+	margin: 0 auto;
+	margin-top: 40px;
+	padding: 10px 10px 10px 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: #1761A0;
+}
+
+.login button img{
+	padding-right: 7px;
+}
+
+.EventCard{
+	width: 760px;
+	padding: 10px;
+	margin: 10px auto;
+	border: 3px solid #4267b2;
+	border-radius: 10px;
+	height: auto;
+	overflow: hidden;
+}
+
+.EventCard img{
+	width: 30%;
+	height: auto;	
+	margin: 10px;
+	float: left;
+}
+
+.EventCard h1{
+	text-align: center;
+	font-size: 24px;
+}
