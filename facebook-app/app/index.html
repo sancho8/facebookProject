@@ -17,6 +17,8 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
 
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
 	<!-- Chrome, Firefox OS and Opera -->
 	<meta name="theme-color" content="#000">
 	<!-- Windows Phone -->
@@ -24,7 +26,9 @@
 	<!-- iOS Safari -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
 
-	<style>body { opacity: 0; overflow-x: hidden; } html { background-color: #fff; }</style>
+	<style>
+
+	</style>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 
@@ -53,7 +57,11 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk')); 
 </script>
-<button ng-click="myFacebookLogin()">Login with Facebook</button>
+<div class="login">
+	<img  id="logo" src="img/logo.png"/>
+	<button ng-click="myFacebookLogin()">
+		<img src="img/facebookminlogo.png"/>Continue with Facebook</button>
+</div>
 <button ng-click="executeSearch()">Execute search</button>
 
 	<div class="container">
@@ -61,9 +69,16 @@
 		<div class="row">
 
 			<div class="col-sm-8 col-sm-offset-2">
-				<div ng-repeat="event in eventsData" style="padding: 10px; border:2px solid red">
-					{{event.name}}
+				<div class="EventCard" ng-repeat="event in eventsData" >
+					
 					<img ng-src="{{event.coverPicture}}"/>
+					
+					<h1>{{event.name}}</h1>
+					<p>Дата: {{event.startTime | date: medium}}</p>
+					<p>Ідуть: {{event.stats.attending}}</p>
+					<p>Зацікавлені: {{event.stats.maybe}}</p>
+					<p>Деталі: {{event.description}}</p>
+					
 				</div>
 			</div>
 			
