@@ -1,6 +1,6 @@
 'use strict'
 
-var app = angular.module("app", []);
+var app = angular.module("app", ['ngSanitize']);
 
 app.controller("mainController", function($scope, $http){
 
@@ -26,6 +26,17 @@ $scope.executeSearch = function(){
 	}, function myError(response) {
 		console.log(response);
 	});
+}
+
+$scope.getDet = function(det){
+	if(det != null){
+	det = det.replace(/(\r\n|\n|\r)/gm, '<br>');
+  	return det;
+
+	}else{
+		return '';
+	}
+
 }
 
 $scope.myFacebookLogin = function() {

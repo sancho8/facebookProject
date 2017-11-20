@@ -31,6 +31,7 @@
 	</style>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.6/angular-sanitize.js"></script>
 
 </head>
 
@@ -77,8 +78,8 @@
 					<p>Дата: {{event.startTime | date: medium}}</p>
 					<p>Ідуть: {{event.stats.attending}}</p>
 					<p>Зацікавлені: {{event.stats.maybe}}</p>
-					<p>Деталі: {{event.description}}</p>
-					
+					<p id="detali">Деталі: <span ng-bind-html="getDet(event.description)"</span></p>
+					<!--<p id="detali">Деталі: {{getDet(event.description)}}</p>-->
 				</div>
 			</div>
 			
