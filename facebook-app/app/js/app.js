@@ -58,7 +58,7 @@ $scope.urlify = function(text) {
 
 $scope.getDet = function(det){
 	if(det != null){
-	det = det.replace(/(\r\n|\n|\r)/gm, '<br>');
+	det = det.replace(/(\r\n|\n|\r)/gm, ' <br>');
 
 	det = $scope.urlify(det);
 
