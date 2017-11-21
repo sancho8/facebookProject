@@ -13,3 +13,9 @@
 [1121/003359.136:ERROR:process_info.cc(632)] range at 0x2997512c00000000, size 0x182 fully unreadable
 [1121/003359.136:ERROR:process_info.cc(632)] range at 0x2997519000000000, size 0x182 fully unreadable
 [1121/003359.136:ERROR:process_info.cc(632)] range at 0x0, size 0x182 fully unreadable
+[1121/010404.653:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\settings.dat: Отказано в доступе. (0x5)
+[1121/010404.656:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Канал был закрыт. (0x6D)
+[1121/010404.658:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\settings.dat: Отказано в доступе. (0x5)
+[1121/013244.098:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\settings.dat: Отказано в доступе. (0x5)
+[1121/013244.100:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Канал был закрыт. (0x6D)
+[1121/013244.102:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\settings.dat: Отказано в доступе. (0x5)
