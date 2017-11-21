@@ -38,6 +38,40 @@ p {
 	padding-right: 7px;
 }
 
+
+
+#header {
+	font-size: 18px;
+}
+
+#header > img{
+	width: 150px;
+	height: auto;
+}
+
+#header input{
+	padding-left: 5px;
+}
+#header input {
+	outline:none;
+	width: 400px;
+}
+
+#header button{
+	background-color: #1761A0;
+	color: white;
+	border: none;
+	padding: 3px 4px 3px 4px;
+	margin-left: -5px;
+}
+
+#header button img{
+	padding-right: 5px;
+	width: 24px;
+	height: auto;
+}
+
+
 .EventCard{
 	width: 760px;
 	padding: 10px;

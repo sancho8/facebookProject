@@ -62,12 +62,15 @@
 	</div>
 
 	<div class="container" ng-show="isLoggedIn">
-		{{location}}
-		{{locationDetails}}
-		<div>
-			<label>Location (city, place or area)</label>
+		<!--{{location}}
+		{{locationDetails}} -->
+		<div id="header">
+			<img src="img/logo.png"/>
+			<label>Location (city, place or area):</label>
 			<input ng-model="location" details="locationDetails" googleplace placeholder="">
-			<button ng-click="executeSearch()">Execute search</button>
+			<button ng-click="executeSearch()">
+				<img src="img/search2.png"/>Search
+			</button>
 		</div>
 
 		<div class="row">
