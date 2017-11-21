@@ -1,8 +1,8 @@
 'use strict'
 
-var app = angular.module("app", ['ngSanitize']);
+var app = angular.module("app", ['ngSanitize', 'ngCookies']);
 
-app.controller("mainController", function($scope, $http){
+app.controller("mainController", function($scope, $http, $cookieStore){
 
 //http://localhost:3000/events?lat=40.710803&lng=-73.964040&distance=100&sort=venue&accessToken=YOUR_APP_ACCESS_TOKEN
 $scope.accessToken = "";
@@ -15,7 +15,18 @@ $scope.addressComponents = "adddress";
 
 $scope.locationDetails = {};
 
+$scope.isLoading = false;
+
+$scope.checkLogin = function(){
+	var token = $cookieStore.get('token');
+	if(token != undefined){
+		$scope.accessToken = token;
+		$scope.isLoggedIn = true;
+	}
+}
+
 $scope.executeSearch = function(){
+	$scope.isLoading=true;
 	$http({
 		method: "GET",
 		url: "http://localhost:8080/events",
@@ -28,21 +39,41 @@ $scope.executeSearch = function(){
 		}
 	}).then(function mySuccess(response) {
 		console.log(response);
+		$scope.isLoading = false;
 		$scope.eventsData = response.data.events;
 	}, function myError(response) {
+		$scope.isLoading = false;
 		console.log(response);
 	});
+}
+
+$scope.urlify = function(text) {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '">' + url + '</a>';
+    })
+    // or alternatively
+    // return text.replace(urlRegex, '<a href="$1">$1</a>')
 }
 
 $scope.getDet = function(det){
 	if(det != null){
 	det = det.replace(/(\r\n|\n|\r)/gm, '<br>');
+
+	det = $scope.urlify(det);
+
   	return det;
 
 	}else{
 		return '';
 	}
 
+}
+
+$scope.logout = function(){
+	 $cookieStore.remove('token');
+	 $scope.accessToken = undefined;
+	 window.location.reload();
 }
 
 $scope.myFacebookLogin = function() {
@@ -53,6 +84,7 @@ $scope.myFacebookLogin = function() {
 			debugger;
 			$scope.isLoggedIn = true;
 			$scope.accessToken = access_token;
+			$cookieStore.put('token', access_token);
 			$('#loginBtn').click();
 			FB.api('/me', function(response) {
 				console.log('Good to see you, ' + response.name + '.');

@@ -19,6 +19,7 @@
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 	<!-- Chrome, Firefox OS and Opera -->
 	<meta name="theme-color" content="#000">
 	<!-- Windows Phone -->
@@ -32,7 +33,7 @@
 
 </head>
 
-<body ng-controller="mainController">
+<body ng-controller="mainController" ng-cloak ng-init="checkLogin()">
 
 	<script>
 		window.fbAsyncInit = function() {
@@ -58,47 +59,79 @@
 <div class="login" ng-show="!isLoggedIn">
 	<img id="logo" src="img/logo.png"/>
 	<button id="loginBtn" ng-click="myFacebookLogin()">
-		<img src="img/facebookminlogo.png"/>Continue with Facebook</button>
-	</div>
+		<img src="img/facebookminlogo.png"/>Continue with Facebook
+	</button>
+</div>
 
-	<div class="container" ng-show="isLoggedIn">
+<div class="container" ng-show="isLoggedIn">
+	<br/>
+	<div class="row container-fluid">
 		<!--{{location}}
 		{{locationDetails}} -->
 		<div id="header">
-			<img src="img/logo.png"/>
-			<label>Location (city, place or area):</label>
-			<input ng-model="location" details="locationDetails" googleplace placeholder="">
-			<button ng-click="executeSearch()">
+			<div>
+				<img src="img/logo.png"/>
+
+				<button class="btn btn-lg btn-primary" ng-click="logout()" style="float:right">
+					Logout
+					<span class="glyphicon glyphicon-log-out"></span>
+				</button>
+			</div>
+			<br/>
+			<form name="searchForm" ng-submit="executeSearch()"> 
+				<div class="input-group input-group-lg col-sm-8 col-sm-offset-2" style="margin: auto;">
+					<input class="form-control"ng-model="location" details="locationDetails" googleplace placeholder="Location (city, place or area):" aria-describedby="basic-addon2">
+					<span class="input-group-btn" id="basic-addon2">
+					<button class="btn btn-secondary" type="submit">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+					</span>
+					<!--<input type="submit" class="input-group-addon btn-primary" id="basic-addon2">
+					<span class="glyphicon glyphicon-search"></span>
+				</span>-->
+			</div>
+		</form>
+	</div>
+
+			<!--<input ng-model="location" details="locationDetails" googleplace placeholder="">
+			<button class="btn btn-lg btn-primary" ng-click="executeSearch()">
 				<img src="img/search2.png"/>Search
-			</button>
+			</button>-->
 		</div>
 
-		<div class="row">
-
+		<div class="loader" ng-show="isLoading">
+			<img width="200px" src="img/Spin.svg">
+		</div> 
+		<div class="row" ng-show="!isLoading">
+			<br/>
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="EventCard" ng-repeat="event in eventsData" >
-					
-					<img ng-src="{{event.coverPicture}}"/>
-					
-					<h1>{{event.name}}</h1>
-					<p>Дата: {{event.startTime | date: medium}}</p>
-					<p>Ідуть: {{event.stats.attending}}</p>
-					<p>Зацікавлені: {{event.stats.maybe}}</p>
-					<p id="detali">Деталі: <span ng-bind-html="getDet(event.description)"</span></p>
-					<!--<p id="detali">Деталі: {{getDet(event.description)}}</p>-->
-				</div>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="event in eventsData" >
+
+						<img class="img-responsive" ng-src="{{event.coverPicture}}"/>
+
+						<h1>{{event.name}}</h1>
+						<p>Дата: {{event.startTime | date: medium}}</p>
+						<p>Ідуть: {{event.stats.attending}}</p>
+						<p>Зацікавлені: {{event.stats.maybe}}</p>
+						<p id="detali">Деталі: <span ng-bind-html="getDet(event.description)"></span></p>
+						<!--<p id="detali">Деталі: {{getDet(event.description)}}</p>-->
+					</li>
+				</ul>
 			</div>
 			
 		</div>
-
 	</div>
-	
-	<link rel="stylesheet" href="css/main.min.css">
-	<script src="js/scripts.min.js"></script>
+</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.6/angular-sanitize.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUwAGywD5CNCx7_aXqKBhwDId4tXCEOBw&libraries=places"></script>
-	<script type="text/javascript" src="js/app.js"></script>
+<link rel="stylesheet" href="css/main.min.css">
+<script src="js/scripts.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.6/angular-sanitize.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-cookies.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUwAGywD5CNCx7_aXqKBhwDId4tXCEOBw&libraries=places"></script>
+<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

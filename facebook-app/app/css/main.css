@@ -54,15 +54,12 @@ p {
 }
 #header input {
 	outline:none;
-	width: 400px;
 }
 
 #header button{
 	background-color: #1761A0;
 	color: white;
 	border: none;
-	padding: 3px 4px 3px 4px;
-	margin-left: -5px;
 }
 
 #header button img{
@@ -92,4 +89,13 @@ p {
 .EventCard h1{
 	text-align: center;
 	font-size: 24px;
+}
+.loader{
+	width: 200px;
+	margin: auto;
+}
+
+.list-group-item{
+	margin: 20px 0;
+	border: 2px solid blue;
 }
