@@ -102,9 +102,9 @@
 		<div class="loader" ng-show="isLoading">
 			<img width="200px" src="img/Spin.svg">
 		</div> 
+		<br/>
 		<div class="row" ng-show="!isLoading">
-			<br/>
-			<div class="col-sm-8 col-sm-offset-2">
+			<!--<div class="col-sm-8 col-sm-offset-2">
 				<ul class="list-group">
 					<li class="list-group-item" ng-repeat="event in eventsData" >
 
@@ -115,10 +115,19 @@
 						<p>Ідуть: {{event.stats.attending}}</p>
 						<p>Зацікавлені: {{event.stats.maybe}}</p>
 						<p id="detali">Деталі: <span ng-bind-html="getDet(event.description)"></span></p>
-						<!--<p id="detali">Деталі: {{getDet(event.description)}}</p>-->
 					</li>
 				</ul>
-			</div>
+			</div>-->
+			<div class="col-md-4"  ng-repeat="event in eventsData" ng-show="eventsData.length !=0">
+    <div class="thumbnail" >
+      <a href="/w3images/lights.jpg">
+	  <img class="img-responsive" ng-src="{{event.coverPicture}}"/>
+        <div class="caption">
+          <p>{{event.name}}</p>
+        </div>
+      </a>
+    </div>
+  </div>
 			
 		</div>
 	</div>
